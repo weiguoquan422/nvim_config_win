@@ -1,0 +1,27 @@
+{
+    "bookmark.sign": {
+        "type": "none",
+        "description": "Bookmark icon for sign column"
+    },
+
+    "diagnostic.errorSign": {
+        "type": "none",
+        "description": "Text of error sign",
+        "default": ">>"
+    },
+    "diagnostic.warningSign": {
+        "type": "none",
+        "description": "Text of warning sign",
+        "default": "⚠"
+    },
+    "diagnostic.infoSign": {
+        "type": "none",
+        "description": "Text of info sign",
+        "default": ">>"
+    },
+    "diagnostic.hintSign": {
+        "type": "none",
+        "description": "Text of hint sign",
+        "default": ">>"
+    }
+}
