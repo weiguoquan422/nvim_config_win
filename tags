@@ -89,6 +89,10 @@ g:rainbow_active	.\init.vim	/^let g:rainbow_active = 1 "0 if you want to enable 
 g:startify_change_to_dir	.\init.vim	/^let g:startify_change_to_dir = 0$/;"	v
 g:tagbar_ctags_bin	.\init.vim	/^let g:tagbar_ctags_bin='C:\\ctags58\\ctags.exe'$/;"	v
 g:templates_use_licensee	.\init.vim	/^let g:templates_use_licensee=0$/;"	v
+g:tex_conceal	.\init.vim	/^let g:tex_conceal = ""$/;"	v
+g:vim_markdown_conceal	.\init.vim	/^let g:vim_markdown_conceal = 0$/;"	v
+g:vim_markdown_conceal_code_blocks	.\init.vim	/^let g:vim_markdown_conceal_code_blocks = 0$/;"	v
+g:vim_markdown_math	.\init.vim	/^let g:vim_markdown_math = 1$/;"	v
 gd	.\init.vim	/^nmap <silent> gd <Plug>(coc-definition)$/;"	m
 gi	.\init.vim	/^nmap <silent> gi <Plug>(coc-implementation)$/;"	m
 git_validate	.\autoload\plug.vim	/^function! s:git_validate(spec, check_branch)$/;"	f

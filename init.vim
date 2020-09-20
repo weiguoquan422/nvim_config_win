@@ -124,6 +124,11 @@ Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
 "rainbow:show different levels of brackets in different colors
 Plug 'luochen1990/rainbow'
+"vim markdown
+Plug 'godlygeek/tabular' "this plugin is necessary, it should be before the vim-markdown
+Plug 'plasticboy/vim-markdown'
+"vim-markdown-toc
+Plug 'mzlogin/vim-markdown-toc'
 "This is a simple plugin for Vim that will allow you to have a set of templates for certain file types.
 Plug 'aperezdc/vim-template',{'frozen': 1}
 "align text by some character
@@ -279,6 +284,17 @@ let g:startify_change_to_dir = 0
 
 "about rainbow
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+
+"about vim-markdown
+"disable syntax concealing
+let g:vim_markdown_conceal = 0
+"To disable math conceal with LaTeX math
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+"Disabling conceal for code fences
+let g:vim_markdown_conceal_code_blocks = 0
+
 
 "about templates
 let g:templates_use_licensee=0
