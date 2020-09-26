@@ -133,6 +133,11 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'aperezdc/vim-template',{'frozen': 1}
 "align text by some character
 Plug 'tommcdo/vim-lion'
+"auto testbench
+Plug 'kdurant/verilog-testbench'
+"vim-SystemVerilog
+Plug 'WeiChungWu/vim-SystemVerilog'
+
 
 " Initialize plugin system
 call plug#end()
