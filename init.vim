@@ -8,7 +8,6 @@ set nocompatible
 "about encoding
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-set ff=unix
 
 "about search and display
 "ingnore case when searching with /
@@ -44,8 +43,20 @@ vmap <Leader>p "+p
 "alt+right/left to move between buffers
 nmap <A-right> <Esc>:bn<CR>
 nmap <A-left> <Esc>:bp<CR>
+
 "close current buffer
-nmap <Leader>bd <Esc>:bd<CR>
+function! Close_current_buf()
+    let buffer_num=len(getbufinfo({'buflisted':1}))
+    if buffer_num>1
+        :bp|bd #
+    else
+        :bd
+    endif
+    return buffer_num
+endfunction
+
+nmap <Leader>bd :call Close_current_buf()<CR>
+
 "vertical partition window
 nmap <Leader>wv <Esc>:vs<CR>
 "close current window
@@ -102,8 +113,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 "bufferline
 Plug 'bling/vim-bufferline'
-"CtrlP
-Plug 'ctrlpvim/ctrlp.vim'
+"leaderF--fuzzy find
+Plug 'Yggdroot/LeaderF', { 'do': './install.bat' }
 "git
 Plug 'lambdalisue/gina.vim'
 "gitgutter--dispaly git diff in gutter
@@ -151,50 +162,22 @@ let g:gutentags_enabled = 1
 nmap <F2> :TagbarToggle<CR>
 let g:tagbar_ctags_bin='C:\ctags58\ctags.exe'
 
-"CtrlP
-"ctrlpline
-nmap <leader>sf :CtrlPLine<CR>
-"Ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-"chang mapping to invoke CtrlP
-let g:ctrlp_map = '<leader>ff'
-"Use this to customize the mappings inside CtrlP's prompt to your liking. You only need to keep the lines that you've changed the values (inside []) 
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtBS()':              ['<bs>', '<c-]>'],
-  \ 'PrtDelete()':          ['<del>'],
-  \ 'PrtDeleteWord()':      ['<c-w>'],
-  \ 'PrtClear()':           ['<c-u>'],
-  \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-  \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-  \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-  \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-  \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
-  \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
-  \ 'PrtHistory(-1)':       ['<c-n>'],
-  \ 'PrtHistory(1)':        ['<c-p>'],
-  \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-  \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-  \ 'AcceptSelection("t")': ['<c-t>'],
-  \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
-  \ 'ToggleFocus()':        ['<s-tab>'],
-  \ 'ToggleRegex()':        ['<c-r>'],
-  \ 'ToggleByFname()':      ['<c-d>'],
-  \ 'ToggleType(1)':        ['<c-f>', '<c-up>'],
-  \ 'ToggleType(-1)':       ['<c-b>', '<c-down>'],
-  \ 'PrtExpandDir()':       ['<tab>'],
-  \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
-  \ 'PrtInsert()':          ['<c-\>'],
-  \ 'PrtCurStart()':        ['<c-a>'],
-  \ 'PrtCurEnd()':          ['<c-e>'],
-  \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
-  \ 'PrtCurRight()':        ['<c-l>', '<right>'],
-  \ 'PrtClearCache()':      ['<F5>'],
-  \ 'PrtDeleteEnt()':       ['<F7>'],
-  \ 'CreateNewFile()':      ['<c-y>'],
-  \ 'MarkToOpen()':         ['<c-z>'],
-  \ 'OpenMulti()':          ['<c-o>'],
-  \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
-  \ }
+
+"about LeaderF
+"fuzzy find file
+let g:Lf_ShortcutF = "<leader>ff"
+"disable separator
+let g:Lf_DisableStl = 1
+"disable icons
+let g:Lf_ShowDevIcons = 0
+"fuzzy find grep using rg
+noremap <leader>sf :<C-U><C-R>=printf("Leaderf rg %s", "")<CR><CR>
+"fuzzy find line in buffer
+noremap <leader>sb :<C-U><C-R>=printf("Leaderf line")<CR><CR>
+" search word under cursor, the pattern is treated as regex
+noremap <leader>sd :<C-U><C-R>=printf("Leaderf rg -s -w %s ", expand("<cword>"))<CR><CR>
+"Recall last rg search result
+noremap <leader>sr :<C-U><C-R>=printf("Leaderf rg --recall")<CR><CR>
 
 
 "about coc
