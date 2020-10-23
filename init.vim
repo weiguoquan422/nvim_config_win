@@ -8,6 +8,9 @@ set nocompatible
 "about encoding
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+"make Vim default to Unix line endings while still supporting DOS line endings
+set fileformats=unix,dos
+set fileformat=unix
 
 "about search and display
 "ingnore case when searching with /
@@ -29,6 +32,8 @@ set cursorline
 set wildmenu
 "allow switch buffer without saving current buffer
 set hidden
+"allow use mouse
+set mouse=a
 
 
 "about mapping and Leader
